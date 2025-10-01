@@ -1,11 +1,9 @@
 // lib/halaman/halaman_login.dart
-// Username: Dzaky Wiratama
-// Password: 124230024
 
 import 'package:flutter/material.dart';
 import 'halaman_utama.dart';
 
-// ini class utama buat halaman login, sengaja pake stateful biar bisa ngelola inputan user.
+// ini class utama buat halaman login, sengaja pake stateful biar bisa ngelola inputan user
 class HalamanLogin extends StatefulWidget {
   const HalamanLogin({super.key});
 
@@ -14,18 +12,16 @@ class HalamanLogin extends StatefulWidget {
 }
 
 class _HalamanLoginState extends State<HalamanLogin> {
-  // ini variabel buat ngambil teks dari kolom username sama password.
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  String _errorMessage = '';
 
-  // fungsi `_login` ini buat ngecek username sama passwordnya bener apa ngga pas tombol login ditekan.
+  // fungsi `_login` ini buat ngecek username sama passwordnya bener apa ngga pas tombol login ditekan
   void _login() {
-    const String username = 'Dzaky Wiratama';
-    const String password = '124230024';
+    const String userBenar = 'dzaky';
+    const String passBenar = '024';
 
-    if (_usernameController.text == username &&
-        _passwordController.text == password) {
+    if (_usernameController.text == userBenar &&
+        _passwordController.text == passBenar) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -34,92 +30,73 @@ class _HalamanLoginState extends State<HalamanLogin> {
         ),
       );
     } else {
-      setState(() {
-        _errorMessage = 'Username atau Password salah!';
-      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('username atau password salah'),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 
-  // fungsi `build` ini yang nampilin semua tampilan buat halaman login.
+  // fungsi `build` ini yang nampilin semua tampilan buat halaman login
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(32.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // bagian ini buat nampilin icon mobil sama tulisan selamat datang di atas.
-              const Icon(Icons.directions_car, size: 80, color: Colors.blueAccent),
-              const SizedBox(height: 20),
               const Text(
-                'Selamat Datang',
-                textAlign: TextAlign.center,
+                'Login',
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
-                'Masuk untuk melanjutkan',
-                textAlign: TextAlign.center,
+              const Text(
+                'welcome to vehicle app',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey[600],
+                  color: Colors.grey,
                 ),
               ),
-              const SizedBox(height: 40),
-              // ini widget buat kolom input username.
+              const SizedBox(height: 48),
               TextField(
                 controller: _usernameController,
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  prefixIcon: const Icon(Icons.person),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                decoration: const InputDecoration(
+                  labelText: 'username',
+                  border: OutlineInputBorder(),
                 ),
               ),
               const SizedBox(height: 16),
-              // yang ini buat kolom input password, `obscureText` biar isinya jadi bintang-bintang.
               TextField(
                 controller: _passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  prefixIcon: const Icon(Icons.lock),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                decoration: const InputDecoration(
+                  labelText: 'password',
+                  border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 10),
-              // bagian ini cuma muncul kalo username atau passwordnya salah.
-              if (_errorMessage.isNotEmpty)
-                Text(
-                  _errorMessage,
-                  style: const TextStyle(color: Colors.red),
-                  textAlign: TextAlign.center,
-                ),
-              const SizedBox(height: 20),
-              // ini tombol loginnya, kalo ditekan bakal jalanin fungsi `_login`.
+              const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: _login,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
                   backgroundColor: Colors.blueAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  )
                 ),
                 child: const Text(
                   'Login',
                   style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: Colors.white
+                  ),
                 ),
               ),
             ],
