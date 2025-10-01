@@ -85,11 +85,11 @@ class HalamanUtama extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        // bagian ini khusus buat nampilin gambar mobilnya dari link pertama di `imageUrls`.
+                        // bagian ini buat nampilin gambar mobilnya dari link ketiga di `imageUrls`.
                         Expanded(
                           child: vehicle.imageUrls.isNotEmpty
                               ? Image.network(
-                                  vehicle.imageUrls[0],
+                                  vehicle.imageUrls[2],
                                   fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) {
                                     return const Center(
