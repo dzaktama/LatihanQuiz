@@ -85,18 +85,14 @@ class _HalamanLoginState extends State<HalamanLogin> {
               ElevatedButton(
                 onPressed: _login,
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: Colors.blueAccent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  )
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    backgroundColor: Colors.blueAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    )),
                 child: const Text(
                   'Login',
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white
-                  ),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
             ],
